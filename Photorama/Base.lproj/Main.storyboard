@@ -33,7 +33,13 @@
                             <constraint firstAttribute="trailing" secondItem="WO8-lf-q19" secondAttribute="trailing" id="xRr-EA-eVc"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" title="Photorama" id="rPr-Rw-hDx"/>
+                    <navigationItem key="navigationItem" title="Photorama" id="rPr-Rw-hDx">
+                        <barButtonItem key="leftBarButtonItem" title="Switch" id="Hgb-fN-BLb">
+                            <connections>
+                                <action selector="toggleList:" destination="BYZ-38-t0r" id="b3R-eK-AsG"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <outlet property="imageView" destination="WO8-lf-q19" id="uwT-x4-HHT"/>
                     </connections>
