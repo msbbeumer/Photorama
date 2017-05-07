@@ -32,6 +32,7 @@ class PhotosViewController: UIViewController, UICollectionViewDelegate {
     collectionView.dataSource = photoDataSource
     collectionView.delegate = self
     
+    
     store.fetchPhotosList {
       (photosResult) -> Void in
       
@@ -74,5 +75,26 @@ class PhotosViewController: UIViewController, UICollectionViewDelegate {
     default:
       preconditionFailure("Unexpected segue identifier")
     }
+  }
+}
+
+extension PhotosViewController: UICollectionViewDelegateFlowLayout {
+  
+  
+  func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+    let collectionViewWidth = collectionView.bounds.size.width
+    let numberOfItemsPerRow: CGFloat = 4
+    let itemWidth = (collectionViewWidth / numberOfItemsPerRow) - 2
+    
+    return CGSize(width: itemWidth, height: itemWidth)
+  }
+  
+  func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
+    let interItemSpacing: CGFloat = 2
+    return interItemSpacing
+  }
+  
+  override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
+    collectionView.reloadData()
   }
 }
